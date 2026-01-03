@@ -143,7 +143,11 @@ NOTES:
  *   Rating: 1
  */
 int bitXor(int x, int y) {
-  /*exploit the power of ~ and & to compute bitxor*/
+  /*
+   * taking advantage of the truth table to
+   * formulate which values evaulates to true and then
+   * taking advantage of A | B == ~(~A & ~B) 
+  */
   return ~(~(~x & y) & ~(x & ~y));
 }
 /* 
@@ -153,11 +157,13 @@ int bitXor(int x, int y) {
  *   Rating: 1
  */
 int tmin(void) {
+  /*
+   * shifting 1 by 31 bits will result for the minimum value which is 0x80000000
+   */
 
-  return 2;
+  return 1 << 31;
 
 }
-//2
 /*
  * isTmax - returns 1 if x is the maximum, two's complement number,
  *     and 0 otherwise 
