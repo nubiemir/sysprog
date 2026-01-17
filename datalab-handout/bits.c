@@ -186,7 +186,10 @@ int isTmax(int x) {
  *   Max ops: 12
  *   Rating: 2
  */
-int allOddBits(int x) { return 2; }
+int allOddBits(int x) {
+  int mask = 0xAAAAAAAA;
+  return !((x & mask) ^ mask);
+}
 /*
  * negate - return -x
  *   Example: negate(1) = -1.
@@ -194,8 +197,10 @@ int allOddBits(int x) { return 2; }
  *   Max ops: 5
  *   Rating: 2
  */
-int negate(int x) { return 2; }
-// 3
+int negate(int x) {
+  int y = (~x) | x;
+  return (x ^ y) + 1;
+}
 /*
  * isAsciiDigit - return 1 if 0x30 <= x <= 0x39 (ASCII codes for characters '0'
  * to '9') Example: isAsciiDigit(0x35) = 1. isAsciiDigit(0x3a) = 0.
